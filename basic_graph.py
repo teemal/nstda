@@ -69,8 +69,8 @@ if __name__ == '__main__':
     for i in a:
         source, dest = i.split()[0:2]
         tgt_graph.add_link(source, dest)
-    print tgt_graph
-    print "Links:"
+    print(tgt_graph)
+    print("Links:")
     for i in tgt_graph.links.keys():
         dest_links = ' '.join(tgt_graph.links[i].keys()) 
-        print '%s: %s' % (i, dest_links)
+        print('%s: %s' % (i, dest_links))
