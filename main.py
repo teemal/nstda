@@ -5,7 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 #new graph
-g = nx.Graph()
+g = nx.MultiGraph()
 #open pcap
 f = open(sys.argv[1])
 pcap = dpkt.pcap.Reader(f)
@@ -33,7 +33,6 @@ Now, each node could be important from an angle depending on how importanceis de
 Centrality comes in different flavors and each flavor or a metric defines importance of a node from a 
 different perspective and further provides relevant analytical information about the graph and its nodes.
 """
-centrality = {}
 
 """
 This metric defines and measures the importance of a node in a network 
@@ -78,10 +77,7 @@ c = nx.closeness_centrality(g)
 for v in g.nodes():
     print("%s %f" % (v, c[v]))
 
-for i in  c:
-    print(i)
-
 # nx.draw(g, with_labels = True) 
 # plt.savefig("filename.png")
 
-# f.close()
+f.close()
