@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 from bokeh.io import show, output_file
 from bokeh.plotting import figure
 from bokeh.models.graphs import from_networkx
+from bokeh.io import show, output_file
+from bokeh.models import Plot, Range1d, MultiLine, Circle, HoverTool, BoxZoomTool, ResetTool
+from bokeh.palettes import Spectral4
 
 #new graph
 g = nx.MultiGraph()
@@ -79,19 +82,14 @@ print("Closeness centrality")
 c = nx.closeness_centrality(g)
 for v in g.nodes():
     print("%s %f" % (v, c[v]))
-
-
-G=nx.karate_club_graph()
+# done with file
+f.close()
 
 plot = figure(title="Networkx Integration Demonstration", x_range=(-1.1,1.1), y_range=(-1.1,1.1),
               tools="", toolbar_location=None)
 
-graph = from_networkx(G, nx.spring_layout, scale=2, center=(0,0))
+graph = from_networkx(g, nx.spring_layout, scale=2, center=(0,0))
 plot.renderers.append(graph)
 
 output_file("networkx_graph.html")
 show(plot)
-# nx.draw(g, with_labels = True) 
-# plt.savefig("filename.png")
-
-f.close()
